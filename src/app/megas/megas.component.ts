@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-megas',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
 })
 export class MegasComponent {
   numbers : String = '';
+  bets : number = 6;
   betNum : Array<number> = [];
   drawNum : Array<number> = [];
-  guess : number = 0;
+  message : String = '';
 
   draw()
   {
@@ -32,20 +34,40 @@ export class MegasComponent {
       this.betNum[i] = Number(betNum[i]);
     }
     console.log(this.betNum);
+    if (new Set(this.betNum).size !== this.betNum.length)
+    {
+      this.message = 'Existem números repetidos!'
+      return false;
+    }
+    else
+    {
+      if (this.betNum.length == this.bets)
+      { return true; }
+      else
+      {
+        this.message = 'Você não colocou apenas ' + this.bets + ' números';
+        return false;
+      }
+    }
   }
 
   verifyBet()
   {
+    this.drawNum = [];
     let r = 0;
-    this.draw(); this.bet();
-    for (let i = 0; i < 6; i++)
+
+    if (this.bet())
     {
-      for(let j = 0; j < 6; j++)
+      this.draw();
+      for (let i = 0; i < 6; i++)
       {
-        if (this.betNum[i] == this.drawNum[j])
-        { r++; }
+        for(let j = 0; j < 6; j++)
+        {
+          if (this.betNum[i] == this.drawNum[j])
+          { r++; }
+        }
       }
+      this.message = 'Você acertou ' + r + ' números.';
     }
-    this.guess = r;
   }
 }
