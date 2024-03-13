@@ -28,6 +28,7 @@ export class MegasComponent {
 
   bet()
   {
+    this.betNum = [];
     let betNum = this.numbers.split(',');
     for (let i = 0; i < betNum.length; i++)
     {
@@ -37,6 +38,11 @@ export class MegasComponent {
     if (new Set(this.betNum).size !== this.betNum.length)
     {
       this.message = 'Existem números repetidos!'
+      return false;
+    }
+    else if (this.betNum.includes(NaN))
+    {
+      this.message = 'Coloque apenas números entre 1 à 60 e separados por vírgula(,)!'
       return false;
     }
     else
