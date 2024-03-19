@@ -1,0 +1,14 @@
+.circle{
+  background-color: white;
+  border-radius: 200px;
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.circle p
+{
+  color: black;
+  margin-top: 2px;
+  text-align: center;
+}

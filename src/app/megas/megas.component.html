@@ -1,4 +1,7 @@
 <div class="text-bg-success m-5 p-5 rounded-5">
+  <div class="d-flex justify-content-center">
+    <img src="../assets/img/logo-megasena.png" class="img-fluid">
+  </div>
   <div class="text-center mb-3">
     <p>Selecione a quantidade de números que você deseja apostar:</p>
     <div class="form-check form-check-inline">
@@ -25,10 +28,35 @@
 
   <div class="form-floating text-bg-light rounded-5 mb-3">
     <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="numbers" name="numbers">
-    <label for="floatingInput">Insira os números que deseja apostar</label>
+    <label for="floatingInput">Insira os números que deseja apostar, separados por vírgular (,)</label>
   </div>
 
-  <button type="button" class="btn btn-primary" (click)="verifyBet()">sortear</button>
-  <p>{{message}}</p>
-  <p>{{drawNum[0]}} {{drawNum[1]}} {{drawNum[2]}} {{drawNum[3]}} {{drawNum[4]}} {{drawNum[5]}}</p>
+  <div class="row justify-content-center mx-auto">
+    <button type="button" class="btn btn-primary" (click)="verifyBet()">sortear</button>
+  </div>
+
+  <div class="d-flex justify-content-center mt-3">
+    <div class="circle">
+      <p>{{drawNum[0]}}</p>
+    </div>
+    <div class="circle">
+      <p>{{drawNum[1]}}</p>
+    </div>
+    <div class="circle">
+      <p>{{drawNum[2]}}</p>
+    </div>
+    <div class="circle">
+      <p>{{drawNum[3]}}</p>
+    </div>
+    <div class="circle">
+      <p>{{drawNum[4]}}</p>
+    </div>
+    <div class="circle">
+      <p>{{drawNum[5]}}</p>
+    </div>
+  </div>
+
+  <div class="alert alert-success mt-3" role="alert" style="height: 60px;">
+    {{message}}
+  </div>
 </div>
